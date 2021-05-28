@@ -1,5 +1,5 @@
 import { React, useCallback, useState, createContext } from 'react';
-import SelectBox from './component/module/SelectBox';
+import SelectBox from './components/module/SelectBox';
 import View from './page/View';
 
 export const Select = createContext('분석');

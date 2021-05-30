@@ -24,10 +24,10 @@ const Div = styled.div`
     display: flex;
 `;
 
-const SelectUserBox = ({ users, onChange }) => {
+const SelectUserBox = ({ users, onChange, value }) => {
     return (
         <Div>
-            <Select onChange={onChange}>
+            <Select onChange={onChange} value={value}>
                 <option value='없음'>선택하기</option>
                 {users.map((user) => (
                     <option key={user.id} value={user.id}>

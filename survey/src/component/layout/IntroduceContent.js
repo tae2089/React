@@ -18,17 +18,19 @@ const IntroduceContent = () => {
     });
     const getInfo = async () => {
         console.log('start getInfo');
-        const uri = '/user/' + username;
+        const uri = '/survey/user/' + username;
         console.log(uri);
         try {
-            const response = await axios.get(uri);
-            const data = response.data;
-            setInfo({
-                name: data.name,
-                age: data.age,
-                school: data.school,
-            });
-            console.log(data);
+            if (username !== 0) {
+                const response = await axios.get(uri);
+                const data = response.data;
+                setInfo({
+                    name: data.name,
+                    age: data.age,
+                    school: data.school,
+                });
+                console.log(data);
+            }
         } catch (e) {
             console.log(e);
         }

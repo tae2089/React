@@ -28,10 +28,10 @@ const SelectBox = ({ onChange }) => {
     return (
         <Div>
             <Select name='selectSurvey' id='selectSurvey' onChange={onChange}>
-                <option value='없음'>세션선택</option>
-                <option value='분석'>분석</option>
-                <option value='시각화'>시각화</option>
-                <option value='엔지니어링'>엔지니어링</option>
+                <option value='0'>세션선택</option>
+                <option value='1'>분석</option>
+                <option value='2'>시각화</option>
+                <option value='3'>엔지니어링</option>
             </Select>
         </Div>
     );

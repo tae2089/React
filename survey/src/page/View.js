@@ -11,17 +11,27 @@ export const Select = createContext('분석');
 const Div = styled.div`
     display: flex;
 `;
+
+let a = [];
 const View = () => {
     const [selectValue, setSelectValue] = useState(0);
     const [users, setUsers] = useState([]);
-    const selectId = useRef();
-    const getUsers = async () => {
-        console.log('test start');
+    const [useSelect, setUseSelect] = useState(false);
+    const [selectIdx, setSelectIdx] = useState(0);
+    const getUsers = async (event) => {
         try {
-            const response = await axios.get('/user');
+            console.log('test start');
+            const response = await axios.get('/survey/user', {
+                params: {
+                    section: event.target.value,
+                    issuccess: 0,
+                },
+            });
             const data = response.data;
             console.log(data);
-            setUsers(data.users);
+            setUseSelect((value) => true);
+            setUsers((users) => data);
+            a = data;
             console.log('test end');
         } catch (e) {
             console.log(e);
@@ -29,21 +39,25 @@ const View = () => {
     };
 
     const getUser = useCallback((event) => {
-        console.log(event.target.value);
-        setSelectValue(event.target.value);
+        console.log(event.target.selectedIndex);
+        setSelectIdx(() => event.target.selectedIndex);
+        setSelectValue((value) => event.target.value);
     }, []);
 
     const Success = useCallback(() => {
-        setSelectValue((value) => value * 1 + 1);
-    }, []);
+        console.log(selectIdx);
+        setSelectValue(() => users[selectIdx].id);
+        setSelectIdx((idx) => idx + 1);
+    }, [selectIdx, users]);
 
     const fail = useCallback(() => {
-        setSelectValue((value) => value * 1 - 1);
-    }, []);
+        console.log(selectIdx);
+        setSelectValue(() => users[selectIdx - 2].id);
+        setSelectIdx((idx) => idx - 1);
+    }, [selectIdx, users]);
 
     return (
         <div>
-            <Header />
             <Div>
                 <SelectBox onChange={getUsers} />
                 <SelectUserBox

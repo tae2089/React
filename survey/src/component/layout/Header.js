@@ -27,12 +27,12 @@ const Header = () => {
                 </Link>
             </Box>
             <Box>
-                <Link className='text' to='/allow'>
+                <Link className='text' to='/success'>
                     합격자 관리
                 </Link>
             </Box>
             <Box>
-                <Link className='text' to='/cancle'>
+                <Link className='text' to='/fail'>
                     탈락자 관리
                 </Link>
             </Box>

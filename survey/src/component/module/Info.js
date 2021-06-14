@@ -14,15 +14,17 @@ const DivItem = styled.div`
     border: 1px solid;
 `;
 
-const Info = ({ age, school, name }) => {
+const Info = ({ depertment, school, name, military }) => {
     return (
         <Div>
             <DivItem>이름</DivItem>
             <DivItem>{name}</DivItem>
-            <DivItem>나이</DivItem>
-            <DivItem>{age}</DivItem>
             <DivItem>학교</DivItem>
             <DivItem>{school}</DivItem>
+            <DivItem>학과</DivItem>
+            <DivItem>{depertment}</DivItem>
+            <DivItem>병역이수</DivItem>
+            <DivItem>{military}</DivItem>
         </Div>
     );
 };
